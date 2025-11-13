@@ -1,0 +1,174 @@
+================================================================================
+                    📱 FOOD TRACKER - ULTRA SIMPLE
+================================================================================
+
+LOCATION: D:\MCP\foodtracker
+
+================================================================================
+                        QUICK ANSWER
+================================================================================
+
+Q: Does my PC need to be on?
+A: NO! You have 3 options:
+
+   1. PC On       = Auto-sync every hour (easiest if PC usually on)
+   2. PC Off      = Manual sync once per week (most flexible!)
+   3. Cloud       = Auto-sync 24/7, no PC needed (best long-term)
+
+================================================================================
+                        HOW IT WORKS (SIMPLE)
+================================================================================
+
+┌────────────────────────┐
+│  YOU (Phone)           │
+│  Talk to Omi:          │
+│  "I ate banana"        │
+└────────────────────────┘
+           ↓
+┌────────────────────────┐
+│  OMI (Phone App)       │
+│  Saves to cloud        │
+│  (2-3 min processing)  │
+└────────────────────────┘
+           ↓
+┌────────────────────────┐
+│  SCRIPT (PC/Cloud)     │
+│  Pulls from Omi        │
+│  Calculates: 105 cal   │
+│  Saves to CSV          │
+└────────────────────────┘
+           ↓
+┌────────────────────────┐
+│  YOU (Phone)           │
+│  Check Google Sheets   │
+│  See: banana, 105 cal  │
+└────────────────────────┘
+
+================================================================================
+                        WHAT YOU NEED
+================================================================================
+
+✅ Omi device (you have!)
+✅ Phone with Omi app
+✅ Google Sheets app (phone)
+✅ PC or cloud server (for sync)
+
+❌ NO Claude Desktop needed
+❌ NO API keys needed
+❌ NO complexity!
+
+================================================================================
+                        OPTION 2: MANUAL SYNC (RECOMMENDED)
+================================================================================
+
+SETUP (One-Time - 5 minutes):
+
+1. Create Google Sheet on phone
+   - New sheet: "Food_Tracker"
+   - Tab: "Meals"
+   - Columns: Date | Time | Food | Calories | Protein | Carbs | Fat
+
+2. Get Sheet ID from URL
+
+3. On PC:
+   cd /mnt/d/MCP/foodtracker
+   export HEALTH_SHEET_ID="your_id_here"
+   ./phone-setup.sh
+
+DAILY USE (100% Phone):
+
+Monday-Friday:
+- Just talk to Omi normally
+- "I had oats for breakfast"
+- "Chicken shawarma for lunch"
+- Data stored in Omi cloud
+
+Saturday (5 minutes on PC):
+- Turn on PC
+- Run: food-sync-now
+- Pulls ENTIRE WEEK
+- Import CSV to Google Sheets
+- Done!
+
+================================================================================
+                        FILES IN THIS FOLDER
+================================================================================
+
+START.txt              ← You are here (quick reference)
+README.md              ← Main guide (read this!)
+HOW_IT_WORKS.md        ← Detailed explanation
+PHONE_VERSION.md       ← Phone usage guide
+
+phone-setup.sh         ← Setup script (run once)
+phone-food-sync.py     ← Sync script (runs hourly or manual)
+sync-now.sh            ← Manual sync trigger
+
+================================================================================
+                        COMMANDS
+================================================================================
+
+Setup (one-time):
+  cd /mnt/d/MCP/foodtracker
+  export HEALTH_SHEET_ID="your_id"
+  ./phone-setup.sh
+
+Manual sync (anytime):
+  food-sync-now
+
+Check status:
+  food-check
+
+View logs:
+  food-logs
+
+See data:
+  cat ~/.config/food-log.csv
+
+================================================================================
+                        WHAT GETS LOGGED
+================================================================================
+
+You Say:              Logged As:
+"I ate banana"        → Banana | 105 cal | 1.3g protein
+"Chicken shawarma"    → Shawarma | 650 cal | 45g protein
+"2 chapatis"          → 2 Chapatis | 140 cal | 6g protein
+"Oats with banana"    → Oats | 150 cal | 5g protein
+                        Banana | 105 cal | 1.3g protein
+
+30+ foods built-in! No AI needed!
+
+================================================================================
+                        TROUBLESHOOTING
+================================================================================
+
+Q: "food-sync-now command not found"
+A: Run: source ~/.bashrc
+
+Q: "Nothing logged"
+A: 1. Did Omi process your audio? (check Omi app)
+   2. Run sync: food-sync-now
+   3. Check: cat ~/.config/food-log.csv
+
+Q: "How do I import CSV to Sheets?"
+A: Google Sheets app → Menu → Import → Upload file
+
+================================================================================
+                        NEXT STEPS
+================================================================================
+
+1. Read: README.md (in this folder)
+2. Setup: ./phone-setup.sh
+3. Test: Talk to Omi, run food-sync-now
+4. Import: CSV → Google Sheets
+5. Use: Daily on phone!
+
+================================================================================
+
+RECOMMENDED: Start with Option 2 (manual sync)
+- Most flexible
+- PC can be off most of the time
+- Sync when convenient
+
+Then upgrade to auto-sync (Option 1) or cloud (Option 3) later!
+
+================================================================================

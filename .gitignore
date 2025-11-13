@@ -1,0 +1,40 @@
+# Environment and secrets
+.env
+backend/.env
+*.json
+google-credentials.json
+.airtable_credentials
+.omi_credentials
+CREDENTIALS_MASTER.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Food photos (don't commit personal photos)
+food-photos/
+~/food-photos/
+
+# State files
+.config/
+*.pid
